@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flor Amarilla</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <div class="flor" id="flor">
+        <div class="petalo"></div>
+        <div class="petalo"></div>
+        <div class="petalo"></div>
+        <div class="petalo"></div>
+        <div class="centro"></div>
+        <div class="tallo"></div>
+        <div class="hoja"></div>
+        
+    </div>
+    <div class="mensaje">Te amo mi reina 🌻🖇️</div>
+    <img src="dalliam.jpg" alt="Imagen especial" class="imagen" id="imagen">
+   
+ <script>
+ function mostrarMensaje() {
+        const mensaje = "Te amo mi reina";
+        const mensajeDiv = document.getElementById("mensaje");
+        mensaje.split("").forEach((letra, index) => {
+            const span = document.createElement("span");
+            span.textContent = letra;
+            span.classList.add("letra");
+            span.style.animationDelay = `${index * 0.2}s`;
+            mensajeDiv.appendChild(span);
+        });
+    }
+    function crearCorazon() {
+        const corazon = document.createElement('div');
+        corazon.classList.add('corazon');
+        corazon.innerHTML = '❤';
+        const flor = document.getElementById('flor');
+        const rect = flor.getBoundingClientRect();
+        corazon.style.position = 'absolute';
+        corazon.style.left = `${rect.left + rect.width / 2}px`;
+        corazon.style.top = `${rect.top - 20}px`;
+        document.body.appendChild(corazon);
+        setTimeout(() => { corazon.remove(); }, 3000);
+    }
+    setInterval(crearCorazon, 700);
+ </script>    
+</body>
+</html>
